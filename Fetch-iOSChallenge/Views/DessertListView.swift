@@ -1,0 +1,34 @@
+//
+//  ContentView.swift
+//  Fetch-iOSChallenge
+//
+//  Created by JaredMurray on 7/31/24.
+//
+
+import SwiftUI
+
+struct DessertListView: View {
+    @State private var vm = DessertListViewModel()
+    
+    var body: some View {
+        List {
+            ForEach(vm.dessertList, id: \.dessertID) { dessert in
+                Text(dessert.dessertName)
+            }
+        }
+        .onAppear {
+            Task {
+                do {
+                    try await vm.fetchDessertList()
+                } catch {
+                    print(error.localizedDescription)
+                    //handle errors
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    DessertListView()
+}
