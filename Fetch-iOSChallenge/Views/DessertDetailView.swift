@@ -12,9 +12,12 @@ struct DessertDetailView: View {
     var dessertID: String
     
     var body: some View {
-        List {
-            ForEach(vm.dessertDetails, id: \.dessertName) { detail in
-                Text(detail.strIngredient1)
+        ScrollView {
+            VStack {
+                InstructionsView
+                VStack {
+                    IngredientView
+                }
             }
         }
         .onAppear {
@@ -24,6 +27,28 @@ struct DessertDetailView: View {
                 } catch {
                     
                 }
+            }
+        }
+    }
+    
+    private var InstructionsView: some View {
+        ScrollView {
+            ForEach(vm.dessertDetails, id: \.dessertName) { detail in
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Instructions:")
+                    Text(detail.dessertInstructions)
+                }
+            }
+            
+        }
+        .frame(width: 350, height: 300)
+    }
+    
+    private var IngredientView: some View {
+        ForEach(vm.ingredientsAndMeasurements.sorted(by: >), id: \.key) { ingredient, measurement in
+            HStack {
+                Text(ingredient)
+                Text(measurement)
             }
         }
     }

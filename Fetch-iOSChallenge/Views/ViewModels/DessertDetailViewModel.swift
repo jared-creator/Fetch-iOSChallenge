@@ -10,6 +10,10 @@ import SwiftUI
 @Observable
 class DessertDetailViewModel {
     var dessertDetails: [DessertDetail] = []
+    var ingredientsAndMeasurements: [String: String] = [:]
+    
+    private var ingredients: [String] = []
+    private var measurements: [String] = []
     
     func fetchDessertDetails(dessert id: String) async throws {
         guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)") else { return }
@@ -22,6 +26,7 @@ class DessertDetailViewModel {
         do {
             let decoder = JSONDecoder()
             dessertDetails = try decoder.decode(MealDetails.self, from: data).meals
+            makeIngredientAndMeasurementDict()
         } catch {
             print(error.localizedDescription)
             // handle errors
@@ -29,6 +34,19 @@ class DessertDetailViewModel {
     }
     
     func makeIngredientAndMeasurementDict() {
+        var index = 0
+        //loop through the selected dessert in order to gather the ingredient and measurement details
+        for detail in dessertDetails {
+            //compactMap to handle nil values //filter to handle empty strings "" & " " (spacing) both handled
+             ingredients = detail.getIngredients().compactMap({$0}).filter({$0 != " " && $0 != ""})
+             measurements = detail.getMeasurements().compactMap({$0}).filter({$0 != " " && $0 != ""})
+        }
         
+        //create a dictionary assigning the measurements to the appropiate ingredient
+        guard ingredients.count == measurements.count else { return }
+        for _ in 0..<ingredients.count {
+            ingredientsAndMeasurements[ingredients[index]] = measurements[index]
+            index += 1
+        }
     }
 }

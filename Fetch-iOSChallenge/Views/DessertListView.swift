@@ -14,7 +14,7 @@ struct DessertListView: View {
         NavigationStack {
             List {
                 ForEach(vm.dessertList, id: \.dessertID) { dessert in
-                    NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID)) {
+                    NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID).navigationTitle(dessert.dessertName)) {
                         Text(dessert.dessertName)
                         Text(dessert.dessertID)
                     }
