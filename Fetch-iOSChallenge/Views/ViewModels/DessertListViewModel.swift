@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable
 class DessertListViewModel {
+    
     var dessertList: [Dessert] = []
     
     func fetchDessertList() async throws {
@@ -21,8 +22,7 @@ class DessertListViewModel {
         
         do {
             let decoder = JSONDecoder()
-            let desserts = try decoder.decode(Meals.self, from: data)
-            self.dessertList = desserts.meals
+            self.dessertList = try decoder.decode(Meals.self, from: data).meals
         } catch {
             print(error.localizedDescription)
                 //handle errors
