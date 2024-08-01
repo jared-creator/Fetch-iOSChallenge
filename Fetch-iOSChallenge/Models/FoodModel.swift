@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Meals: Codable {
+    var meals: [Dessert]
+}
+
 struct Dessert: Codable {
     var dessertName: String
     var dessertPictureURL: String
@@ -17,8 +21,4 @@ struct Dessert: Codable {
         case dessertPictureURL = "strMealThumb"
         case dessertID = "idMeal"
     }
-}
-
-struct Meals: Codable {
-    var meals: [Dessert]
 }

@@ -22,7 +22,10 @@ class DessertListViewModel {
         
         do {
             let decoder = JSONDecoder()
-            self.dessertList = try decoder.decode(Meals.self, from: data).meals
+            dessertList = try decoder.decode(Meals.self, from: data).meals
+            dessertList.sort {
+                $0.dessertName < $1.dessertName
+            }
         } catch {
             print(error.localizedDescription)
                 //handle errors

@@ -11,18 +11,23 @@ struct DessertListView: View {
     @State private var vm = DessertListViewModel()
     
     var body: some View {
-        List {
-            ForEach(vm.dessertList, id: \.dessertID) { dessert in
-                Text(dessert.dessertName)
+        NavigationStack {
+            List {
+                ForEach(vm.dessertList, id: \.dessertID) { dessert in
+                    NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID)) {
+                        Text(dessert.dessertName)
+                        Text(dessert.dessertID)
+                    }
+                }
             }
-        }
-        .onAppear {
-            Task {
-                do {
-                    try await vm.fetchDessertList()
-                } catch {
-                    print(error.localizedDescription)
-                    //handle errors
+            .onAppear {
+                Task {
+                    do {
+                        try await vm.fetchDessertList()
+                    } catch {
+                        print(error.localizedDescription)
+                        //handle errors
+                    }
                 }
             }
         }
