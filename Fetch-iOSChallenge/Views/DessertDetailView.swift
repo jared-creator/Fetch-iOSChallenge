@@ -24,14 +24,10 @@ struct DessertDetailView: View {
         }
         .onAppear {
             Task {
-                do {
-                    try await vm.fetchDessertDetails(dessert: dessertID)
-                } catch {
-                    
-                }
+                try await vm.fetchDessertDetails(dessert: dessertID)
             }
             Task {
-                await vm.fetchImage(picture: dessertImageURL)
+                try await vm.fetchImage(picture: dessertImageURL)
             }
         }
     }

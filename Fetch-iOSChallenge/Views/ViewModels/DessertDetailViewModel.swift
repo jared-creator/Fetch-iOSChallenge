@@ -41,7 +41,6 @@ class DessertDetailViewModel {
             //compactMap to handle nil values //filter to handle empty strings "" & " " (spacing) both handled
             ingredients = detail.getIngredients().compactMap({$0}).filter({$0 != " " && $0 != ""})
              measurements = detail.getMeasurements().compactMap({$0}).filter({$0 != " " && $0 != ""})
-            print(ingredients)
         }
         
         //create a dictionary assigning the measurements to the appropiate ingredient
@@ -53,7 +52,7 @@ class DessertDetailViewModel {
     }
     
     //not needed but made the ui look better and I had extra time
-    func fetchImage(picture url: String) async {
+    func fetchImage(picture url: String) async throws {
         do {
             guard let url = URL(string: url) else { return }
             let (data, response) = try await URLSession.shared.data(from: url)
