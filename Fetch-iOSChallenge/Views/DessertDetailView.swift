@@ -20,6 +20,8 @@ struct DessertDetailView: View {
                 VStack {
                     IngredientView
                 }
+                .accessibilityAddTraits(.isStaticText)
+                .accessibilityIdentifier("ingredientStack") //for testing purposes
             }
         }
         .onAppear {
@@ -31,7 +33,7 @@ struct DessertDetailView: View {
             }
         }
     }
-    
+
     private var DessertImage: some View {
         vm.dessertImage?
             .resizable()

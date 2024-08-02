@@ -36,11 +36,12 @@ class DessertDetailViewModel {
     
     func makeIngredientAndMeasurementDict() {
         var index = 0
+        
         //loop through the selected dessert in order to gather the ingredient and measurement details
         for detail in dessertDetails {
             //compactMap to handle nil values //filter to handle empty strings "" & " " (spacing) both handled
             ingredients = detail.getIngredients().compactMap({$0}).filter({$0 != " " && $0 != ""})
-             measurements = detail.getMeasurements().compactMap({$0}).filter({$0 != " " && $0 != ""})
+            measurements = detail.getMeasurements().compactMap({$0}).filter({$0 != " " && $0 != ""})
         }
         
         //create a dictionary assigning the measurements to the appropiate ingredient

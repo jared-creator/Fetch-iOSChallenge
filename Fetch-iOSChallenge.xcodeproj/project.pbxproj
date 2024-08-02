@@ -16,7 +16,19 @@
 		9BC9A96C2C5B2F9C001C781F /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A96B2C5B2F9C001C781F /* DessertDetailView.swift */; };
 		9BC9A96E2C5B3003001C781F /* DessertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A96D2C5B3003001C781F /* DessertDetailViewModel.swift */; };
 		9BC9A9702C5B30C1001C781F /* FoodDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A96F2C5B30C1001C781F /* FoodDetailModel.swift */; };
+		9BC9A9782C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A9772C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift */; };
+		9BC9A97A2C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A9792C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9BC9A97B2C5C7D92001C781F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BC9A9482C5B1CB1001C781F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BC9A94F2C5B1CB1001C781F;
+			remoteInfo = "Fetch-iOSChallenge";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9BC9A9502C5B1CB1001C781F /* Fetch-iOSChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch-iOSChallenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,10 +41,20 @@
 		9BC9A96B2C5B2F9C001C781F /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
 		9BC9A96D2C5B3003001C781F /* DessertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailViewModel.swift; sourceTree = "<group>"; };
 		9BC9A96F2C5B30C1001C781F /* FoodDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailModel.swift; sourceTree = "<group>"; };
+		9BC9A9752C5C7D92001C781F /* Fetch-iOSChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch-iOSChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BC9A9772C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_iOSChallengeUITests.swift; sourceTree = "<group>"; };
+		9BC9A9792C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_iOSChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9BC9A94D2C5B1CB1001C781F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BC9A9722C5C7D92001C781F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC9A9522C5B1CB1001C781F /* Fetch-iOSChallenge */,
+				9BC9A9762C5C7D92001C781F /* Fetch-iOSChallengeUITests */,
 				9BC9A9512C5B1CB1001C781F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC9A9502C5B1CB1001C781F /* Fetch-iOSChallenge.app */,
+				9BC9A9752C5C7D92001C781F /* Fetch-iOSChallengeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,6 +130,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9BC9A9762C5C7D92001C781F /* Fetch-iOSChallengeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9BC9A9772C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift */,
+				9BC9A9792C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift */,
+			);
+			path = "Fetch-iOSChallengeUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,6 +159,24 @@
 			productReference = 9BC9A9502C5B1CB1001C781F /* Fetch-iOSChallenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9BC9A9742C5C7D92001C781F /* Fetch-iOSChallengeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BC9A97F2C5C7D92001C781F /* Build configuration list for PBXNativeTarget "Fetch-iOSChallengeUITests" */;
+			buildPhases = (
+				9BC9A9712C5C7D92001C781F /* Sources */,
+				9BC9A9722C5C7D92001C781F /* Frameworks */,
+				9BC9A9732C5C7D92001C781F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9BC9A97C2C5C7D92001C781F /* PBXTargetDependency */,
+			);
+			name = "Fetch-iOSChallengeUITests";
+			productName = "Fetch-iOSChallengeUITests";
+			productReference = 9BC9A9752C5C7D92001C781F /* Fetch-iOSChallengeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -138,6 +189,10 @@
 				TargetAttributes = {
 					9BC9A94F2C5B1CB1001C781F = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					9BC9A9742C5C7D92001C781F = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 9BC9A94F2C5B1CB1001C781F;
 					};
 				};
 			};
@@ -155,6 +210,7 @@
 			projectRoot = "";
 			targets = (
 				9BC9A94F2C5B1CB1001C781F /* Fetch-iOSChallenge */,
+				9BC9A9742C5C7D92001C781F /* Fetch-iOSChallengeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -166,6 +222,13 @@
 			files = (
 				9BC9A95B2C5B1CB2001C781F /* Preview Assets.xcassets in Resources */,
 				9BC9A9582C5B1CB2001C781F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BC9A9732C5C7D92001C781F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +249,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9BC9A9712C5C7D92001C781F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BC9A9782C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift in Sources */,
+				9BC9A97A2C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9BC9A97C2C5C7D92001C781F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9BC9A94F2C5B1CB1001C781F /* Fetch-iOSChallenge */;
+			targetProxy = 9BC9A97B2C5C7D92001C781F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9BC9A95C2C5B1CB2001C781F /* Debug */ = {
@@ -366,6 +446,40 @@
 			};
 			name = Release;
 		};
+		9BC9A97D2C5C7D92001C781F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q2MQTLB8FK;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jared-murray.Fetch-iOSChallengeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fetch-iOSChallenge";
+			};
+			name = Debug;
+		};
+		9BC9A97E2C5C7D92001C781F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q2MQTLB8FK;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jared-murray.Fetch-iOSChallengeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fetch-iOSChallenge";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -383,6 +497,15 @@
 			buildConfigurations = (
 				9BC9A95F2C5B1CB2001C781F /* Debug */,
 				9BC9A9602C5B1CB2001C781F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BC9A97F2C5C7D92001C781F /* Build configuration list for PBXNativeTarget "Fetch-iOSChallengeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BC9A97D2C5C7D92001C781F /* Debug */,
+				9BC9A97E2C5C7D92001C781F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
