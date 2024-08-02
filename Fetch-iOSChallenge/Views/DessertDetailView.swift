@@ -13,17 +13,18 @@ struct DessertDetailView: View {
     var dessertImageURL: String
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                DessertImage
-                InstructionsView
-                VStack(alignment: .leading) {
-                    IngredientView
+        ZStack {
+            VStack {
+                if vm.dessertImageIsLoading {
+                    ProgressView() //when fetching image from server a progress view is shown to show the user there is something to be displayed
+                } else {
+                    DessertImage
                 }
-                .accessibilityAddTraits(.isStaticText)
-                .accessibilityIdentifier("ingredientStack") //for testing purposes
+                BottomCardView
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.brown.gradient.tertiary)
         .onAppear {
             Task {
                 try await vm.fetchDessertDetails(dessert: dessertID)
@@ -33,7 +34,7 @@ struct DessertDetailView: View {
             }
         }
     }
-
+    
     private var DessertImage: some View {
         vm.dessertImage?
             .resizable()
@@ -42,25 +43,55 @@ struct DessertDetailView: View {
     }
     
     private var InstructionsView: some View {
-        ScrollView {
-            ForEach(vm.dessertDetails, id: \.dessertName) { detail in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Instructions:")
-                    Text(detail.dessertInstructions)
-                }
+        ForEach(vm.dessertDetails, id: \.dessertName) { detail in
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Instructions:")
+                Text(detail.dessertInstructions)
             }
-            
+            .padding([.leading, .trailing])
         }
-        .frame(width: 350, height: 300)
+        
     }
     
-    private var IngredientView: some View {
-        ForEach(vm.ingredientsAndMeasurements.sorted(by: >), id: \.key) { ingredient, measurement in
-            HStack(spacing: 20) {
-                Text("\(ingredient):")
-                Text(measurement)
+    private var IngredientStackView: some View {
+        VStack {
+            ForEach(vm.ingredientsAndMeasurements.sorted(by: >), id: \.key) { ingredient, measurement in
+                HStack {
+                    Text("\(ingredient):")
+                    Spacer()
+                    Text(measurement)
+                }
+                .padding([.leading, .trailing])
+                .padding(.bottom, 1)
             }
         }
+    }
+    
+    private var BottomCardView: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .fill(.white)
+            .frame(maxWidth: .infinity)
+            .ignoresSafeArea()
+            .overlay(alignment: .bottom) {
+                VStack {
+                    Picker("Selection", selection: $vm.detailSelection) {
+                        Text("Ingredients")
+                            .tag(DetailSelection.ingredients)
+                        Text("Instructions")
+                            .tag(DetailSelection.instructions)
+                    }
+                    .colorMultiply(.white)
+                    .pickerStyle(.segmented)
+                    ScrollView {
+                        switch vm.detailSelection {
+                        case .ingredients:
+                            IngredientStackView
+                        case .instructions:
+                            InstructionsView
+                        }
+                    }
+                }
+            }
     }
 }
 

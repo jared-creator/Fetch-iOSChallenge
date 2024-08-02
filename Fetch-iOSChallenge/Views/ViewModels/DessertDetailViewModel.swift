@@ -11,7 +11,12 @@ import SwiftUI
 class DessertDetailViewModel {
     var dessertDetails: [DessertDetail] = []
     var ingredientsAndMeasurements: [String: String] = [:]
+    
     var dessertImage: Image?
+    var dessertImageIsLoading = true
+    
+    let columns = [ GridItem(.flexible()) ]
+    var detailSelection: DetailSelection = .ingredients
     
     private var ingredients: [String] = []
     private var measurements: [String] = []
@@ -59,8 +64,13 @@ class DessertDetailViewModel {
             let (data, response) = try await URLSession.shared.data(from: url)
             let uiImage = UIImage(data: data)!
             dessertImage = Image(uiImage: uiImage)
+            dessertImageIsLoading.toggle()
         } catch {
             print(error.localizedDescription)
         }
     }
+}
+
+enum DetailSelection: String {
+    case ingredients, instructions
 }
