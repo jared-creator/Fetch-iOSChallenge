@@ -14,10 +14,10 @@ struct DessertDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 20) {
                 DessertImage
                 InstructionsView
-                VStack {
+                VStack(alignment: .leading) {
                     IngredientView
                 }
                 .accessibilityAddTraits(.isStaticText)
@@ -39,7 +39,6 @@ struct DessertDetailView: View {
             .resizable()
             .scaledToFit()
             .frame(width: 300, height: 300)
-            .padding(.bottom, 30)
     }
     
     private var InstructionsView: some View {
