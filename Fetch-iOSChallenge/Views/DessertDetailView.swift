@@ -10,10 +10,12 @@ import SwiftUI
 struct DessertDetailView: View {
     @State private var vm = DessertDetailViewModel()
     var dessertID: String
+    var dessertImageURL: String
     
     var body: some View {
         ScrollView {
             VStack {
+                DessertImage
                 InstructionsView
                 VStack {
                     IngredientView
@@ -28,7 +30,18 @@ struct DessertDetailView: View {
                     
                 }
             }
+            Task {
+                await vm.fetchImage(picture: dessertImageURL)
+            }
         }
+    }
+    
+    private var DessertImage: some View {
+        vm.dessertImage?
+            .resizable()
+            .scaledToFit()
+            .frame(width: 300, height: 300)
+            .padding(.bottom, 30)
     }
     
     private var InstructionsView: some View {
@@ -46,8 +59,8 @@ struct DessertDetailView: View {
     
     private var IngredientView: some View {
         ForEach(vm.ingredientsAndMeasurements.sorted(by: >), id: \.key) { ingredient, measurement in
-            HStack {
-                Text(ingredient)
+            HStack(spacing: 20) {
+                Text("\(ingredient):")
                 Text(measurement)
             }
         }
@@ -55,5 +68,5 @@ struct DessertDetailView: View {
 }
 
 #Preview {
-    DessertDetailView(dessertID: "52928")
+    DessertDetailView(dessertID: "52928", dessertImageURL: "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg")
 }

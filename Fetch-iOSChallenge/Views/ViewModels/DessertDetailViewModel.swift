@@ -11,6 +11,7 @@ import SwiftUI
 class DessertDetailViewModel {
     var dessertDetails: [DessertDetail] = []
     var ingredientsAndMeasurements: [String: String] = [:]
+    var dessertImage: Image?
     
     private var ingredients: [String] = []
     private var measurements: [String] = []
@@ -38,8 +39,9 @@ class DessertDetailViewModel {
         //loop through the selected dessert in order to gather the ingredient and measurement details
         for detail in dessertDetails {
             //compactMap to handle nil values //filter to handle empty strings "" & " " (spacing) both handled
-             ingredients = detail.getIngredients().compactMap({$0}).filter({$0 != " " && $0 != ""})
+            ingredients = detail.getIngredients().compactMap({$0}).filter({$0 != " " && $0 != ""})
              measurements = detail.getMeasurements().compactMap({$0}).filter({$0 != " " && $0 != ""})
+            print(ingredients)
         }
         
         //create a dictionary assigning the measurements to the appropiate ingredient
@@ -47,6 +49,18 @@ class DessertDetailViewModel {
         for _ in 0..<ingredients.count {
             ingredientsAndMeasurements[ingredients[index]] = measurements[index]
             index += 1
+        }
+    }
+    
+    //not needed but made the ui look better and I had extra time
+    func fetchImage(picture url: String) async {
+        do {
+            guard let url = URL(string: url) else { return }
+            let (data, response) = try await URLSession.shared.data(from: url)
+            let uiImage = UIImage(data: data)!
+            dessertImage = Image(uiImage: uiImage)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
