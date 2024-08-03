@@ -25,7 +25,6 @@ struct DessertDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.brown.tertiary)
         .onAppear {
             Task {
                 try await vm.fetchDessertDetails(dessert: dessertID)
@@ -71,7 +70,7 @@ struct DessertDetailView: View {
     
     private var BottomCardView: some View {
         RoundedRectangle(cornerRadius: 20)
-            .fill(.white.opacity(0.8))
+            .fill(.background)
             .frame(maxWidth: .infinity)
             .ignoresSafeArea()
             .overlay(alignment: .bottom) {
@@ -82,7 +81,6 @@ struct DessertDetailView: View {
                         Text("Instructions")
                             .tag(DetailSelection.instructions)
                     }
-                    .colorMultiply(.white)
                     .pickerStyle(.segmented)
                     ScrollView {
                         switch vm.detailSelection {
