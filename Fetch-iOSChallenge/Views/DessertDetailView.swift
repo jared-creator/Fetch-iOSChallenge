@@ -23,8 +23,9 @@ struct DessertDetailView: View {
                 BottomCardView
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.brown.gradient.tertiary)
+        .background(.brown.tertiary)
         .onAppear {
             Task {
                 try await vm.fetchDessertDetails(dessert: dessertID)
@@ -70,7 +71,7 @@ struct DessertDetailView: View {
     
     private var BottomCardView: some View {
         RoundedRectangle(cornerRadius: 20)
-            .fill(.white)
+            .fill(.white.opacity(0.8))
             .frame(maxWidth: .infinity)
             .ignoresSafeArea()
             .overlay(alignment: .bottom) {

@@ -9,7 +9,6 @@ import SwiftUI
 
 @Observable
 class DessertListViewModel {
-    
     var dessertList: [Dessert] = []
     
     func fetchDessertList() async throws {

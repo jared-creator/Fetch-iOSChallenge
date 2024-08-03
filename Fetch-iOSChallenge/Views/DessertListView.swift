@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DessertListView: View {
     @State private var vm = DessertListViewModel()
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -19,7 +19,11 @@ struct DessertListView: View {
                         //Text(dessert.dessertID) for development issues
                     }
                 }
+                .listRowBackground(Color.clear)
             }
+            .navigationTitle("Desserts")
+            .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
             .onAppear {
                 Task {
                     do {
