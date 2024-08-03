@@ -39,6 +39,7 @@ struct DessertDetailView: View {
         vm.dessertImage?
             .resizable()
             .scaledToFit()
+            .clipShape(RoundedRectangle(cornerRadius: 30))
             .frame(width: 300, height: 300)
     }
     

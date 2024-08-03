@@ -16,7 +16,7 @@ struct DessertListView: View {
                 ForEach(vm.dessertList, id: \.dessertID) { dessert in
                     NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID, dessertImageURL: dessert.dessertPictureURL).navigationTitle(dessert.dessertName)) {
                         Text(dessert.dessertName)
-                        Text(dessert.dessertID)
+                        //Text(dessert.dessertID) for development issues
                     }
                 }
             }
