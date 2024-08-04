@@ -29,6 +29,9 @@ struct DessertDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onDisappear {
+            vm.fetchingImageTask?.cancel() //cancel fetching image when clicking out of detail view
+        }
         .onAppear {
             Task {
                 do {
@@ -37,11 +40,12 @@ struct DessertDetailView: View {
                     if let error = error as? FICError {
                         vm.hasError.toggle()
                         vm.contentError = error
+                        vm.fetchingImageTask?.cancel() //cancel fetching the image
                     }
                 }
             }
-            Task {
-                try await vm.fetchImage(picture: dessertImageURL) //cancel image loading if fetching details failed?
+            vm.fetchingImageTask = Task {
+                try await vm.fetchImage(picture: dessertImageURL)
             }
         }
     }
