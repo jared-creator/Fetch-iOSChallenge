@@ -20,17 +20,28 @@ struct DessertDetailView: View {
                 } else {
                     DessertImage
                 }
-                BottomCardView
+                if vm.hasError {
+                    ContentUnavailableView("Something went wrong", systemImage: "fork.knife", description: Text(vm.contentError.rawValue))
+                } else {
+                    BottomCardView
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear {
             Task {
-                try await vm.fetchDessertDetails(dessert: dessertID)
+                do {
+                    try await vm.fetchDessertDetails(dessert: dessertID)
+                } catch {
+                    if let error = error as? FICError {
+                        vm.hasError.toggle()
+                        vm.contentError = error
+                    }
+                }
             }
             Task {
-                try await vm.fetchImage(picture: dessertImageURL)
+                try await vm.fetchImage(picture: dessertImageURL) //cancel image loading if fetching details failed?
             }
         }
     }

@@ -18,6 +18,7 @@
 		9BC9A9702C5B30C1001C781F /* FoodDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A96F2C5B30C1001C781F /* FoodDetailModel.swift */; };
 		9BC9A9782C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A9772C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift */; };
 		9BC9A97A2C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A9792C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift */; };
+		9BC9A9842C5DD076001C781F /* FICError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9A9832C5DD076001C781F /* FICError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		9BC9A9752C5C7D92001C781F /* Fetch-iOSChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch-iOSChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC9A9772C5C7D92001C781F /* Fetch_iOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_iOSChallengeUITests.swift; sourceTree = "<group>"; };
 		9BC9A9792C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_iOSChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9BC9A9832C5DD076001C781F /* FICError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FICError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC9A9532C5B1CB1001C781F /* Fetch_iOSChallengeApp.swift */,
+				9BC9A9802C5DD010001C781F /* Utilities */,
 				9BC9A9682C5B2175001C781F /* Models */,
 				9BC9A9612C5B1E54001C781F /* Views */,
 				9BC9A9572C5B1CB2001C781F /* Assets.xcassets */,
@@ -137,6 +140,14 @@
 				9BC9A9792C5C7D92001C781F /* Fetch_iOSChallengeUITestsLaunchTests.swift */,
 			);
 			path = "Fetch-iOSChallengeUITests";
+			sourceTree = "<group>";
+		};
+		9BC9A9802C5DD010001C781F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9BC9A9832C5DD076001C781F /* FICError.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +255,7 @@
 				9BC9A9702C5B30C1001C781F /* FoodDetailModel.swift in Sources */,
 				9BC9A96E2C5B3003001C781F /* DessertDetailViewModel.swift in Sources */,
 				9BC9A96C2C5B2F9C001C781F /* DessertDetailView.swift in Sources */,
+				9BC9A9842C5DD076001C781F /* FICError.swift in Sources */,
 				9BC9A9542C5B1CB1001C781F /* Fetch_iOSChallengeApp.swift in Sources */,
 				9BC9A96A2C5B2184001C781F /* FoodModel.swift in Sources */,
 			);

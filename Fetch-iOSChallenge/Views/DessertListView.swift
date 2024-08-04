@@ -12,25 +12,31 @@ struct DessertListView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(vm.dessertList, id: \.dessertID) { dessert in
-                    NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID, dessertImageURL: dessert.dessertPictureURL).navigationTitle(dessert.dessertName)) {
-                        Text(dessert.dessertName)
-                        //Text(dessert.dessertID) for development issues
+            if vm.hasError {
+                ContentUnavailableView("Something went wrong", systemImage: "fork.knife", description: Text(vm.contentError.rawValue))
+            } else {
+                List {
+                    ForEach(vm.dessertList, id: \.dessertID) { dessert in
+                        NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID, dessertImageURL: dessert.dessertPictureURL).navigationTitle(dessert.dessertName)) {
+                            Text(dessert.dessertName)
+                            //Text(dessert.dessertID) for development issues
+                        }
                     }
+                    .listRowBackground(Color.clear)
                 }
-                .listRowBackground(Color.clear)
-            }
-            .navigationTitle("Desserts")
-            .listStyle(.insetGrouped)
-            .scrollContentBackground(.hidden)
-            .onAppear {
-                Task {
-                    do {
-                        try await vm.fetchDessertList()
-                    } catch {
-                        print(error.localizedDescription)
-                        //handle errors
+                .navigationTitle("Desserts")
+                .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
+                .onAppear {
+                    Task {
+                        do {
+                            try await vm.fetchDessertList()
+                        } catch {
+                            if let error = error as? FICError {
+                                vm.hasError.toggle()
+                                vm.contentError = error
+                            }
+                        }
                     }
                 }
             }

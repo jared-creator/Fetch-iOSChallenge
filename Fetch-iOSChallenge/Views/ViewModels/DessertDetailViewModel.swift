@@ -15,27 +15,31 @@ class DessertDetailViewModel {
     var dessertImage: Image?
     var dessertImageIsLoading = true
     
-    let columns = [ GridItem(.flexible()) ]
     var detailSelection: DetailSelection = .ingredients
+    
+    var hasError = false
+    var contentError: FICError = .invalidData
     
     private var ingredients: [String] = []
     private var measurements: [String] = []
     
     func fetchDessertDetails(dessert id: String) async throws {
-        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)") else { return }
-        let (data, repsonse) = try await URLSession.shared.data(from: url)
+        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)") else {
+            throw FICError.invalidResponse
+        }
         
-        //        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-        //            handle errors
-        //        }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw FICError.invalidResponse
+        }
         
         do {
             let decoder = JSONDecoder()
             dessertDetails = try decoder.decode(MealDetails.self, from: data).meals
             makeIngredientAndMeasurementDict()
         } catch {
-            print(error.localizedDescription)
-            // handle errors
+            throw FICError.invalidData
         }
     }
     
@@ -58,15 +62,19 @@ class DessertDetailViewModel {
     }
     
     //not needed but made the ui look better and I had extra time
+    
     func fetchImage(picture url: String) async throws {
         do {
-            guard let url = URL(string: url) else { return }
-            let (data, response) = try await URLSession.shared.data(from: url)
+            guard let url = URL(string: url) else { 
+                throw FICError.invalidResponse
+            }
+            
+            let (data, _) = try await URLSession.shared.data(from: url)
             let uiImage = UIImage(data: data)!
             dessertImage = Image(uiImage: uiImage)
             dessertImageIsLoading.toggle()
         } catch {
-            print(error.localizedDescription)
+            throw FICError.unableToComplete //infinite progress view when image won't load or content unavailable view
         }
     }
 }

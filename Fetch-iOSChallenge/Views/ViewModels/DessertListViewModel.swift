@@ -10,14 +10,16 @@ import SwiftUI
 @Observable
 class DessertListViewModel {
     var dessertList: [Dessert] = []
+    var hasError = false
+    var contentError: FICError = .invalidData
     
     func fetchDessertList() async throws {
         guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else { return }
         let (data, response) = try await URLSession.shared.data(from: url)
         
-//        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//            handle errors
-//        }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw FICError.invalidResponse
+        }
         
         do {
             let decoder = JSONDecoder()
@@ -26,8 +28,7 @@ class DessertListViewModel {
                 $0.dessertName < $1.dessertName
             }
         } catch {
-            print(error.localizedDescription)
-                //handle errors
+            throw FICError.invalidData
         }
     }
 }
