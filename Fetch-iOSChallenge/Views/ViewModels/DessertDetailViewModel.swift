@@ -25,7 +25,7 @@ class DessertDetailViewModel {
     private var measurements: [String] = []
     
     func fetchDessertDetails(dessert id: String) async throws {
-        guard let url = URL(string: "https://themealdb.com/ap/json/v1/1/lookup.php?i=\(id)") else {
+        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(id)") else {
             throw FICError.invalidResponse
         }
         
