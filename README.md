@@ -8,13 +8,16 @@ This app fetches dessert details via https://themealdb.com/api.php. I utilized M
 
 ## Screens
 
-<videos>
+<details>
 <summary> Videos (Click to expand) </summary>
 <br>
 
 
-https://github.com/user-attachments/assets/07f8a646-1878-4947-bfa0-98337a58360b
+https://github.com/user-attachments/assets/dcc38de5-682c-4314-bfb6-79db19f03ea9
 
-https://github.com/user-attachments/assets/6a7b919a-ba17-4f4b-9568-8afb72322853
+
+https://github.com/user-attachments/assets/91bac28e-0dfa-48e3-8fc8-1abce97dfc90
+
+
 
 </details>
