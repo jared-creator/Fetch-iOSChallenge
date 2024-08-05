@@ -17,7 +17,7 @@ struct DessertListView: View {
             } else {
                 List {
                     ForEach(vm.dessertList, id: \.dessertID) { dessert in
-                        NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID, dessertImageURL: dessert.dessertPictureURL).navigationTitle(dessert.dessertName)) {
+                        NavigationLink(destination: DessertDetailView(dessertID: dessert.dessertID, dessertImageURL: dessert.dessertPictureURL, dessertName: dessert.dessertName)) {
                             Text(dessert.dessertName)
                             //Text(dessert.dessertID) for development issues
                         }

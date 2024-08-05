@@ -11,6 +11,7 @@ struct DessertDetailView: View {
     @State private var vm = DessertDetailViewModel()
     var dessertID: String
     var dessertImageURL: String
+    var dessertName: String
     
     var body: some View {
         ZStack {
@@ -27,6 +28,7 @@ struct DessertDetailView: View {
                 }
             }
         }
+        .navigationTitle(dessertName)
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onDisappear {
@@ -56,6 +58,7 @@ struct DessertDetailView: View {
             .scaledToFit()
             .clipShape(RoundedRectangle(cornerRadius: 30))
             .frame(width: 300, height: 300)
+            .accessibilityLabel(dessertName)
     }
     
     private var InstructionsView: some View {
@@ -111,5 +114,5 @@ struct DessertDetailView: View {
 }
 
 #Preview {
-    DessertDetailView(dessertID: "52928", dessertImageURL: "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg")
+    DessertDetailView(dessertID: "52928", dessertImageURL: "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg", dessertName: "")
 }
